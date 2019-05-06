@@ -18,7 +18,6 @@ export default (state = { currencies: [], selectedCurrency: 0 }, action) => {
         ...state,
         currencies: action.response,
         loading: false,
-        loaded: true,
         error: false 
       }
     } else {
