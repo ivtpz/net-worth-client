@@ -1,11 +1,15 @@
 import fetch from 'cross-fetch';
+import { calculate } from './netWorthActions';
 
 export const SELECT_CURRENCY = 'SELECT_CURRENCY'
 
-export const selectCurrency = (id) => ({
-  type: SELECT_CURRENCY,
-  payload: parseInt(id, 10)
-})
+export const selectCurrency = (id) => async dispatch => {
+  await dispatch({
+    type: SELECT_CURRENCY,
+    payload: parseInt(id, 10)
+  });
+  dispatch(calculate(id))
+}
 
 export const getCurrencies = () => (dispatch) => {
   dispatch(requestCurrencies())
