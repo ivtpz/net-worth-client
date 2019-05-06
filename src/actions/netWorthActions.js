@@ -1,7 +1,57 @@
-export const editLine = (line) => (dispatch, getState) => {
-  // TODO: API call
+import fetch from 'cross-fetch';
+
+export const EDIT_LINE = 'EDIT_LINE'
+
+export const editLine = (value, lineId, prop) => (dispatch, getState) => {
   dispatch({
-    type: 'EDIT_LINE',
-    payload: line
+    type: EDIT_LINE,
+    payload: { value, lineId, prop }
   })
 }
+
+export const calculate = (currencyId) => (dispatch, getState) => {
+  dispatch(requestCalculation());
+
+  const state = getState();
+  const body = JSON.stringify({
+    ...state.netWorth,
+    resultCurrencyId: currencyId || state.currency.selectedCurrency
+  })
+
+  return fetch('http://localhost:5000/api/networthcalculator',
+    {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body
+    })
+    .then(
+      response => response.json(),
+      error => { 
+        dispatch(requestCalculationError(error)) 
+      }
+    )
+    .then(json => {
+      if (json) {
+        dispatch(recieveCalculation(json))
+      }
+    })
+}
+
+export const FETCH_NET_WORTH = 'FETCH_NET_WORTH'
+
+const requestCalculation = () => ({
+  type: FETCH_NET_WORTH,
+  status: 'fetching'
+})
+
+const recieveCalculation = (response) => ({
+  type: FETCH_NET_WORTH,
+  status: 'success',
+  response
+})
+
+const requestCalculationError = (error) => ({
+  type: FETCH_NET_WORTH,
+  status: 'error',
+  error
+})
