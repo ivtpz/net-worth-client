@@ -1,0 +1,155 @@
+{
+  "assets": [{
+      "name": "Chequing",
+      "interestRate": 0,
+      "value": 2000.00,
+      "type": 0,
+      "id": 0
+    },
+    {
+      "name": "Savings for Taxes",
+      "interestRate": 0.05,
+      "value": 4000.00,
+      "type": 0,
+      "id": 1
+    },
+    {
+      "name": "Rainy Day Fund",
+      "interestRate": 0,
+      "value": 506.00,
+      "type": 0,
+      "id": 2
+    },
+    {
+      "name": "Savings for Fun",
+      "interestRate": 0,
+      "value": 5000.00,
+      "type": 0,
+      "id": 3
+    },
+    {
+      "name": "Savings for Travel",
+      "interestRate": 0,
+      "value": 400.00,
+      "type": 0,
+      "id": 4
+    },
+    {
+      "name": "Savings for Personal Development",
+      "interestRate": 0.015,
+      "value": 200.00,
+      "type": 0,
+      "id": 5
+    },
+    {
+      "name": "Investment 1",
+      "interestRate": 0.0230,
+      "value": 5000.00,
+      "type": 0,
+      "id": 6
+    },
+    {
+      "name": "Investment 2",
+      "interestRate": 0.02,
+      "value": 60000.00,
+      "type": 0,
+      "id": 7
+    },
+    {
+      "name": "Investment 3",
+      "interestRate": 0.05,
+      "value": 30000.00,
+      "type": 0,
+      "id": 8
+    },
+    {
+      "name": "Investment 4",
+      "interestRate": 0.10,
+      "value": 50000.00,
+      "type": 0,
+      "id": 9
+    },
+    {
+      "name": "Investment 5",
+      "interestRate": 0,
+      "value": 24000.00,
+      "type": 0,
+      "id": 10
+    },
+    {
+      "name": "Primary Home",
+      "interestRate": 0.01,
+      "value": 455000.00,
+      "type": 1,
+      "id": 11
+    },
+    {
+      "name": "Second Home",
+      "interestRate": 0.02,
+      "value": 1564321.00,
+      "type": 1,
+      "id": 12
+    }
+  ],
+  "liabilities": [{
+      "name": "Credit Card 1",
+      "monthlyPayment": 200.00,
+      "interestRate": 0.5,
+      "value": 4342.00,
+      "type": 0,
+      "id": 0
+    },
+    {
+      "name": "Credit Card 2",
+      "monthlyPayment": 150.00,
+      "interestRate": 0.2,
+      "value": 322.00,
+      "type": 0,
+      "id": 1
+    },
+    {
+      "name": "Mortgage 1",
+      "monthlyPayment": 2000.00,
+      "interestRate": 0.0260,
+      "value": 250999.00,
+      "type": 1,
+      "id": 2
+    },
+    {
+      "name": "Mortgage 2",
+      "monthlyPayment": 3500.00,
+      "interestRate": 0.0540,
+      "value": 632634.00,
+      "type": 1,
+      "id": 3
+    },
+    {
+      "name": "Line of Credit",
+      "monthlyPayment": 500.00,
+      "interestRate": 0.05,
+      "value": 10000.00,
+      "type": 1,
+      "id": 4
+    },
+    {
+      "name": "Investment Loan",
+      "monthlyPayment": 700.00,
+      "interestRate": 0.06,
+      "value": 10000.00,
+      "type": 1,
+      "id": 5
+    },
+    {
+      "name": "Student Loan",
+      "type": 1,
+      "id": 6
+    },
+    {
+      "name": "Car Loan",
+      "type": 1,
+      "id": 7
+    }
+  ],
+  "baseCurrencyId": 0,
+  "resultCurrencyId": 0
+}
