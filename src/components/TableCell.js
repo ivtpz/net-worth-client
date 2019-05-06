@@ -20,7 +20,7 @@ const TableCell = props => {
 const styles = {
   container: {
     display: 'flex',
-    justifyContent: 'space-around'
+    justifyContent: 'flex-start'
   },
   flexItem: {
     flexGrow: 1,

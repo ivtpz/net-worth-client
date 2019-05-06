@@ -19,7 +19,7 @@ class App extends Component {
         <Helmet>
           <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
         </Helmet>
-        <div>Tracking your Networth</div>
+        <h2>Tracking your Networth</h2>
         <Currencies></Currencies>
         <NetWorth></NetWorth>
       </div>

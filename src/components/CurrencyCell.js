@@ -37,7 +37,7 @@ class CurrencyCell extends PureComponent {
 const styles = {
   container: {
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-start'
   },
   flexItem: {
     flexGrow: 1,
