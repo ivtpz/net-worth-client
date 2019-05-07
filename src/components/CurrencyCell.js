@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 import Input from '@material-ui/core/Input'
 import debounce from 'lodash/debounce';
+import AnimateOnChange from 'react-animate-on-change'
 import { editLine, calculate } from '../actions/netWorthActions';
+import './animate.css';
 
 const addCommas = number => {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -11,7 +13,7 @@ const addCommas = number => {
 class CurrencyCell extends PureComponent {
   constructor() {
     super();
-    this.debouncedRecalculate = debounce(() => this.props.recalculate(), 1000)
+    this.debouncedRecalculate = debounce(() => this.props.recalculate(), 700)
   }
 
   render() {
@@ -22,12 +24,16 @@ class CurrencyCell extends PureComponent {
           <Input 
             value={this.props.value} 
             onChange={(e) => {
-              this.props.updateLine(e.target.value, this.props.id, this.props.propertyName);
+              this.props.updateLine(e.target.value || 0, this.props.id, this.props.propertyName);
               this.debouncedRecalculate()
             }}
             inputProps={{ type: 'number', step: '0.01' }}
           />
-          : <div>{this.props.value ? addCommas(this.props.value.toFixed(2)) : ''}</div>
+          : <AnimateOnChange
+            baseClassName="value"
+            animationClassName="value--changed"
+            animate={!!this.props.value}
+          >{this.props.value ? addCommas(this.props.value.toFixed(2)) : ''}</AnimateOnChange>
         }
       </div>
     );

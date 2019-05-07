@@ -1,0 +1,8 @@
+.value--changed {
+  animation: changed-keyframes 1.5s;
+}
+
+@keyframes changed-keyframes {
+  from {opacity: 0.01}
+  to {opacity: 1}
+}
