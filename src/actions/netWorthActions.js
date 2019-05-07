@@ -18,7 +18,7 @@ export const calculate = (currencyId) => (dispatch, getState) => {
     resultCurrencyId: currencyId || state.currency.selectedCurrency
   })
 
-  return fetch('http://localhost:5000/api/networthcalculator',
+  return fetch(`${process.env.REACT_APP_CALCULATIONS_SERVICE}/api/networthcalculator`,
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },

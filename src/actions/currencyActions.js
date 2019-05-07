@@ -14,7 +14,7 @@ export const selectCurrency = (id) => async dispatch => {
 export const getCurrencies = () => (dispatch) => {
   dispatch(requestCurrencies())
 
-  return fetch('http://localhost:5005/api/currencies')
+  return fetch(`${process.env.REACT_APP_CURRENCIES_SERVICE}/api/currencies`)
     .then(
       response => response.json(),
       error => { 
