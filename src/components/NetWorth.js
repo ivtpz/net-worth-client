@@ -20,7 +20,7 @@ const ThickDivider = withStyles({
 const NetWorth = (props) => (
   <div>
     <TableLine 
-      cells={[ { value: 'Net Worth' }, {}, {}, { value: props.netWorthTotal, isCurrency: true } ]} 
+      cells={[ { value: 'Net Worth' }, { value: props.netWorthTotal, isCurrency: true }, {}, {} ]} 
       title 
       color={'blue'} 
     />
