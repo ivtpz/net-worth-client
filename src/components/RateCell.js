@@ -2,16 +2,11 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux'
 import Input from '@material-ui/core/Input'
 import debounce from 'lodash/debounce';
-import AnimateOnChange from 'react-animate-on-change'
 import { editLine, calculate } from '../actions/netWorthActions';
 import './animate.css';
 import { getProjection } from '../actions/projectionActions';
 
-const addCommas = number => {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}
-
-class CurrencyCell extends PureComponent {
+class RateCell extends PureComponent {
   constructor() {
     super();
     this.debouncedRecalculate = debounce(() => this.props.recalculate(), 700)
@@ -20,23 +15,16 @@ class CurrencyCell extends PureComponent {
   render() {
     return (
       <div style={{ ...styles.container, ...styles.flexItem }}>
-        {this.props.isEditable || this.props.value ? <div style={styles.symbol}>{this.props.symbol}</div> : <></>}
-        {this.props.isEditable ?
-          <Input 
-            style={styles.input}
-            value={this.props.value} 
-            onChange={(e) => {
-              this.props.updateLine(e.target.value || 0, this.props.id, this.props.propertyName, this.props.field);
-              this.debouncedRecalculate()
-            }}
-            inputProps={{ type: 'number', step: '0.01' }}
-          />
-          : <AnimateOnChange
-            baseClassName="value"
-            animationClassName="value--changed"
-            animate={!!this.props.value}
-          >{this.props.value ? addCommas(this.props.value.toFixed(2)) : ''}</AnimateOnChange>
-        }
+        <Input 
+          style={styles.input}
+          value={(this.props.value * 100)} 
+          onChange={(e) => {
+            this.props.updateLine((parseFloat(e.target.value) || 0) / 100, this.props.id, this.props.propertyName, 'interestRate');
+            this.debouncedRecalculate()
+          }}
+          inputProps={{ type: 'number', step: '0.01' }}
+        />
+        <div style={styles.symbol}>%</div>
       </div>
     );
   }
@@ -53,10 +41,10 @@ const styles = {
     flexBasis: '150px'
   },
   input: {
-    width: '110px'
+    width: '50px'
   },
   symbol: {
-    marginRight: '7px'
+    marginLeft: '7px'
   }
 };
 
@@ -68,9 +56,8 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   updateLine: (value, lineId, propertyName, field) => dispatch(editLine(value, lineId, propertyName, field)),
   recalculate: () => {
-    dispatch(calculate());
     dispatch(getProjection());
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CurrencyCell);
+export default connect(mapStateToProps, mapDispatchToProps)(RateCell);

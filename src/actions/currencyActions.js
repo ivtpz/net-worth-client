@@ -1,5 +1,6 @@
 import fetch from 'cross-fetch';
 import { calculate } from './netWorthActions';
+import { getProjection } from './projectionActions';
 
 export const SELECT_CURRENCY = 'SELECT_CURRENCY'
 
@@ -9,6 +10,9 @@ export const selectCurrency = (id) => async dispatch => {
     payload: parseInt(id, 10)
   });
   dispatch(calculate(id))
+  // TODO: avoid race condition by putting projection calculations
+  // in response handler for calculate
+  setTimeout(() => dispatch(getProjection()), 1500)
 }
 
 export const getCurrencies = () => (dispatch) => {

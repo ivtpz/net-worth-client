@@ -3,11 +3,21 @@ import { connect } from 'react-redux';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import TableLine from './TableLine';
+import Projection from './Projection';
 
 const getCells = (resource, type) => [ 
   { value: resource.name }, 
-  (type === 'assets' ? {} : { value: resource.monthlyPayment, isCurrency: true }), 
-  { value: resource.interestRate, isRate: true }, 
+  (type === 'assets' ? 
+    {} 
+    : { 
+      ...resource, 
+      value: resource.monthlyPayment, 
+      field: 'monthlyPayment',
+      propertyName: type, 
+      isCurrency: true, 
+      isEditable: true 
+    }), 
+  { ...resource, propertyName: type, value: resource.interestRate, isRate: true }, 
   { ...resource, propertyName: type, isCurrency: true, isEditable: true } 
 ];
 
@@ -103,6 +113,7 @@ const NetWorth = (props) => (
         <ThickDivider />
       </div>
     </div>
+    <Projection />
   </div>
 );
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrencyCell from './CurrencyCell';
+import RateCell from './RateCell';
 
 const TableCell = props => {
   if (props.isCurrency) {
@@ -9,9 +10,7 @@ const TableCell = props => {
   }
   if (props.isRate) {
     return (
-      <div style={{ ...styles.container, ...styles.flexItem }}>
-        <div>{typeof props.value === 'number' ? (props.value * 100).toFixed(2) + ' %' : ''}</div>
-      </div>
+      <RateCell {...props} />
     )
   }
   return (<div style={styles.flexItem}>{props.value}</div>)

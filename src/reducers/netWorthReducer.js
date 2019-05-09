@@ -4,7 +4,7 @@ import { FETCH_NET_WORTH, EDIT_LINE } from '../actions/netWorthActions';
 export default (state = { loaded: false }, action) => {
   switch (action.type) {
   case EDIT_LINE: {
-    const { prop, lineId, value } = action.payload
+    const { prop, lineId, value, field = 'value' } = action.payload
     const indexToEdit = state[prop].findIndex(({ id }) => id === lineId);
     const array = state[prop]
     return {
@@ -13,7 +13,7 @@ export default (state = { loaded: false }, action) => {
         ...array.slice(0, indexToEdit),
         {
           ...array[indexToEdit],
-          value: Math.floor(parseFloat(value) * 100) / 100
+          [field]: Math.floor(parseFloat(value) * 100) / 100
         },
         ...array.slice(indexToEdit + 1)
       ]

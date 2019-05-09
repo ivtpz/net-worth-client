@@ -2,10 +2,10 @@ import fetch from 'cross-fetch';
 
 export const EDIT_LINE = 'EDIT_LINE'
 
-export const editLine = (value, lineId, prop) => (dispatch, getState) => {
+export const editLine = (value, lineId, prop, field) => (dispatch, getState) => {
   dispatch({
     type: EDIT_LINE,
-    payload: { value, lineId, prop }
+    payload: { value, lineId, prop, field }
   })
 }
 
